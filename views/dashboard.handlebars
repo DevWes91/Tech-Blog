@@ -1,0 +1,42 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h2>Your Dashboard</h2>
+    <button id="new-post-btn" class="btn">+ New Post</button>
+  </div>
+
+  <div class="post-list">
+    {{#if posts.length}}
+    {{#each posts as |post|}}
+    <div class="dashboard-post">
+      <div class="post-info">
+        <h3><a href="/post/{{post.id}}">{{post.title}}</a></h3>
+        <div class="post-meta">Created on {{format_date post.createdAt}}</div>
+      </div>
+      <div class="post-actions">
+        <button class="edit-btn" data-id="{{post.id}}">Edit</button>
+        <button class="delete-btn" data-id="{{post.id}}">Delete</button>
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>You haven't created any posts yet!</p>
+    {{/if}}
+  </div>
+
+  <div id="post-form" class="hidden">
+    <h3>Create New Post</h3>
+    <form class="new-post-form">
+      <div>
+        <label for="post-title">Title:</label>
+        <input type="text" id="post-title" name="post-title" required>
+      </div>
+      <div>
+        <label for="post-content">Content:</label>
+        <textarea id="post-content" name="post-content" required></textarea>
+      </div>
+      <button type="submit">Create Post</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
