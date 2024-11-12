@@ -11,6 +11,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 const hbs = exphbs.create({ helpers });
 
 const sess = {
@@ -42,3 +44,4 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
+
