@@ -1,3 +1,6 @@
+const Sequelize = require('sequelize');
+require('dotenv').config();
+
 const sequelize = process.env.DATABASE_URL
   ? new Sequelize(process.env.DATABASE_URL, {
       dialectOptions: {
